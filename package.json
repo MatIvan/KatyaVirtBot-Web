@@ -1,5 +1,7 @@
 {
   "name": "katyaweb",
+  "description": "KatyaVirtBot-Web",
+  "displayName": "KatyaVirtBot-Web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
