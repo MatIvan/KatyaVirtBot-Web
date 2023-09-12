@@ -1,0 +1,16 @@
+.HookList {
+    margin-top: 2em;
+}
+.HookList-line{
+    user-select: none;
+    cursor: pointer;
+}
+
+.HookList-line:hover{
+    background-color: #b7b7b7;
+}
+
+.HookList-line-selected{
+    background-color: #6a6a6a;
+    color: white;
+}

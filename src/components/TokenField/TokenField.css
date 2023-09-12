@@ -1,0 +1,20 @@
+.TokenField {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.TokenField-btn {
+    width: 4em;
+    align-self: center;
+    margin-top: 1em;
+}
+
+.TokenField-token {
+    display: flex;
+    flex-direction: column;
+}
+
+.TokenField-token label {
+    margin-top: 0.4em;
+}

@@ -13,23 +13,29 @@ function App() {
 
   return (
     <div className='body-grid'>
-      <TokenField
-        onEnter={(newToken) => { setToken(newToken) }} />
-      <HookList
-        hooks={hooks}
-        onSelect={(hookId) => { onHookSelect(hookId) }} />
+      <div className='body-left'>
+        <TokenField
+          onEnter={(url, newToken) => { setToken(url, newToken) }} />
+        <HookList
+          hooks={hooks}
+          onSelect={(hookId) => { onHookSelect(hookId) }} />
+      </div>
+      <div className='body-right'>
+        right
+      </div>
     </div>
   );
 }
 
-function setToken(newToken) {
+function setToken(url, newToken) {
   HookService.fire('hooks', undefined);
+  StorageService.saveUrl(url);
   StorageService.saveToken(newToken);
   ApiService.getAllHooks();
 }
 
-function onHookSelect(hookId) {
-  console.log("hookId: ", hookId)
+function onHookSelect(hook) {
+  console.log("hook: ", hook)
 }
 
 export default App;

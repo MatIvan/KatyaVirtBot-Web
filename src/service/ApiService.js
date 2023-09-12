@@ -13,6 +13,7 @@ import ApiTool from './ApiTool';
 /**
  * @typedef {object} WebHook
  * @property {number} id
+ * @property {string} name
  * @property {number} userId
  * @property {string} url
  * @property {Condition} condition

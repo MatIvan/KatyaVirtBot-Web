@@ -1,6 +1,5 @@
 //@ts-check
 import StorageService from './StorageService';
-const BASE_URL = "http://localhost:8888";
 
 /**
  * @param {string} uri
@@ -36,7 +35,7 @@ function sendGet(uri) {
  * @returns {Promise<void> | Promise<any>}
  */
 function fetchJson(uri, opt) {
-    return fetch(BASE_URL + uri, opt)
+    return fetch(StorageService.getUrl() + uri, opt)
         .then(resp => {
             const ok = resp.ok;
             return resp.text().then(txt => {
