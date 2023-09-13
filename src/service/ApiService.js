@@ -4,7 +4,7 @@ import ApiTool from './ApiTool';
 
 /**
  * @typedef {object} Condition
- * @property {string} chatName
+ * @property {string | undefined} chatName
  * @property {string[] | undefined} contains 
  * @property {string[] | undefined} startWith
  * @property {boolean} caseSensitive
@@ -12,11 +12,11 @@ import ApiTool from './ApiTool';
 
 /**
  * @typedef {object} WebHook
- * @property {number} id
- * @property {string} name
- * @property {number} userId
- * @property {string} url
- * @property {Condition} condition
+ * @property {number | undefined} id
+ * @property {string | undefined} name
+ * @property {number | undefined} userId
+ * @property {string | undefined} url
+ * @property {Condition | undefined} condition
  */
 
 const uri = '/webhook';

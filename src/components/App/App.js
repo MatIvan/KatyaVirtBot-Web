@@ -5,11 +5,15 @@ import HookService from '../../service/HookService';
 import ApiService from '../../service/ApiService';
 import HookList from '../HookList/HookList';
 import TokenField from '../TokenField/TokenField';
+import HookEditor from '../HookEditor/HookEditor';
 import StorageService from '../../service/StorageService';
 
 function App() {
   const [hooks, setHooks] = useState();
   HookService.setHook('hooks', setHooks);
+
+  const [hook, setHook] = useState();
+  HookService.setHook('hook', setHook);
 
   return (
     <div className='body-grid'>
@@ -18,10 +22,12 @@ function App() {
           onEnter={(url, newToken) => { setToken(url, newToken) }} />
         <HookList
           hooks={hooks}
-          onSelect={(hookId) => { onHookSelect(hookId) }} />
+          onSelect={(hookId) => { setHook(hookId) }} />
       </div>
       <div className='body-right'>
-        right
+        <HookEditor
+          newHook={hook}
+        />
       </div>
     </div>
   );
@@ -32,10 +38,6 @@ function setToken(url, newToken) {
   StorageService.saveUrl(url);
   StorageService.saveToken(newToken);
   ApiService.getAllHooks();
-}
-
-function onHookSelect(hook) {
-  console.log("hook: ", hook)
 }
 
 export default App;

@@ -1,0 +1,33 @@
+.HookEditor {
+    display: flex;
+    flex-direction: column;
+}
+
+.HookEditorLine {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.4em;
+    height: 1.6em;
+}
+
+.HookEditorLine-caption {
+    width: 9em;
+    text-align: end;
+    margin-right: 0.3em;
+    padding-top: 0.1em;
+}
+
+.HookEditorLine-text {
+    flex-grow: 1;
+    padding-top: 0.1em;
+}
+
+.HookEditorLine-input {
+    flex-grow: 1;
+}
+
+.HookEditor-save-btn {
+    width: 4em;
+    align-self: center;
+    margin-top: 1em;
+}

@@ -4,6 +4,10 @@
   margin-top: 2em;
 }
 
+.body-right{
+  flex-grow: 1;
+}
+
 .form {
   border: solid 1px #9d9d9d;
   border-radius: 0.2em;
