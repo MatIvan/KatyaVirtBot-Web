@@ -1,7 +1,7 @@
 //@ts-check
 import React, { useEffect, useState } from 'react';
 import './HookEditor.css';
-import HookEditorLine from './HookEditorLine';
+import { Text, Input, Boolean } from './FormLine';
 
 /**
  * @typedef {import('../../service/ApiService').WebHook} WebHook
@@ -48,14 +48,14 @@ function HookEditor({ newHook }) {
     return (
         <div className='form HookEditor'>
             <h1>Edit hook:</h1>
-            <HookEditorLine key='line-id' caption='id:' value={id} readOnly={true} />
-            <HookEditorLine key='line-userid' caption='userId:' value={userId} readOnly={true} />
-            <HookEditorLine key='line-name' caption='name:' value={name} onChange={(newName) => { setName(newName) }} />
-            <HookEditorLine key='line-url' caption='url:' value={url} onChange={(newUrl) => { setUrl(newUrl) }} />
-            <HookEditorLine key='line-chat' caption='chat:' value={chat} onChange={(newChat) => { setChat(newChat) }} />
-            <HookEditorLine key='line-contains' caption='contains:' value={contains} onChange={(newContains) => { setContains(newContains) }} />
-            <HookEditorLine key='line-startWith' caption='startWith:' value={startWith} onChange={(newStartWith) => { setStartWith(newStartWith) }} />
-            <HookEditorLine key='line-sens' caption='sens:' value={sens} onChange={(newSens) => { setSens(newSens) }} />
+            <Text key='line-id' caption='id:' value={id} />
+            <Text key='line-userid' caption='userId:' value={userId} />
+            <Input key='line-name' caption='name:' value={name} onChange={(newName) => { setName(newName) }} />
+            <Input key='line-url' caption='url:' value={url} onChange={(newUrl) => { setUrl(newUrl) }} />
+            <Input key='line-chat' caption='chat:' value={chat} onChange={(newChat) => { setChat(newChat) }} />
+            <Input key='line-contains' caption='contains:' value={contains} onChange={(newContains) => { setContains(newContains) }} />
+            <Input key='line-startWith' caption='startWith:' value={startWith} onChange={(newStartWith) => { setStartWith(newStartWith) }} />
+            <Boolean key='line-sens' caption='sens:' value={sens} onChange={(newSens) => { setSens(newSens) }} />
             <button className='HookEditor-save-btn' onClick={() => { onSave() }} >save</button>
         </div>
     );

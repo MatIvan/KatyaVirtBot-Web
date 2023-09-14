@@ -28,8 +28,7 @@ function TokenField({ onEnter }) {
             </div>
             <button
                 className='button TokenField-btn'
-                onClick={() => { onEnter(url, token) }}
-            >Apply</button>
+                onClick={() => { onEnter(url, token) }}>Load</button>
         </div>
     );
 }
