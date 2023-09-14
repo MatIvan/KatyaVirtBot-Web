@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import './HookEditor.css';
 import { Text, Input, Boolean } from './FormLine';
+import ApiService from '../../service/ApiService';
 
 /**
  * @typedef {import('../../service/ApiService').WebHook} WebHook
@@ -31,9 +32,8 @@ function HookEditor({ newHook }) {
         setSens(newHook?.condition?.caseSensitive);
     }, [newHook]);
 
-    const onSave = () => {
-        /** @type {WebHook} */
-        const hook = {
+    const getHook = () => {
+        return {
             id, userId, name, url,
             condition: {
                 chatName: chat,
@@ -42,7 +42,17 @@ function HookEditor({ newHook }) {
                 caseSensitive: sens === undefined ? false : sens
             }
         }
-        console.log(hook);
+    }
+
+    const fillEmptyHook=()=>{
+        setId(-1);
+        setUserId(newHook?.userId);
+        setName('new hook');
+        setUrl('http://address');
+        setChat('COMMON');
+        setContains(undefined);
+        setStartWith(undefined);
+        setSens(true);
     }
 
     return (
@@ -56,9 +66,21 @@ function HookEditor({ newHook }) {
             <Input key='line-contains' caption='contains:' value={contains} onChange={(newContains) => { setContains(newContains) }} />
             <Input key='line-startWith' caption='startWith:' value={startWith} onChange={(newStartWith) => { setStartWith(newStartWith) }} />
             <Boolean key='line-sens' caption='sens:' value={sens} onChange={(newSens) => { setSens(newSens) }} />
-            <button className='HookEditor-save-btn' onClick={() => { onSave() }} >save</button>
+            <div className='HookEditor-UI'>
+                <button className='HookEditor-btn' onClick={() => { deleteHook(id) }} >delete</button>
+                <button className='HookEditor-btn' onClick={() => { fillEmptyHook() }} >add</button>
+                <button className='HookEditor-btn' onClick={() => { saveHook(getHook()) }} >save</button>
+            </div>
         </div>
     );
+}
+
+function saveHook(hook) {
+    ApiService.saveHook(hook);
+}
+
+function deleteHook(id) {
+    ApiService.deleteHook(id);
 }
 
 export default HookEditor;

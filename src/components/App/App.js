@@ -22,7 +22,8 @@ function App() {
           onEnter={(url, newToken) => { setToken(url, newToken) }} />
         <HookList
           hooks={hooks}
-          onSelect={(hookId) => { setHook(hookId) }} />
+          selectedHook={hook}
+          onSelect={(selHook) => { setHook(selHook) }} />
       </div>
       <div className='body-right'>
         <HookEditor

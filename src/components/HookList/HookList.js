@@ -1,5 +1,5 @@
 //@ts-check
-import React, { useState } from 'react';
+import React from 'react';
 import './HookList.css';
 
 /**
@@ -7,21 +7,18 @@ import './HookList.css';
  */
 
 /**
- * @param {{hooks: WebHook[] | undefined, onSelect : Function}} props
+ * @param {{hooks: WebHook[] | undefined,selectedHook: WebHook | undefined, onSelect : Function}} props
  */
-function HookList({ hooks, onSelect }) {
-    const [selIndex, setSelIndex] = useState(-1);
-
+function HookList({ hooks, selectedHook, onSelect }) {
     if (!hooks || hooks.length < 1) {
         return (<div className='form HookList'><h1>Hooks:</h1>empty</div>);
     }
     const lines = hooks.map((hook, index) => {
-        const selected = index === selIndex ? "HookList-line-selected" : "";
+        const selected = hook.id === selectedHook?.id ? "HookList-line-selected" : "";
         return (<div
             key={'hook-' + index}
             className={'HookList-line ' + selected}
             onClick={() => {
-                setSelIndex(index);
                 onSelect(hook);
             }}>
             {hook.name}

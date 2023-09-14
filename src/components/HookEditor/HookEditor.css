@@ -26,8 +26,13 @@
     flex-grow: 1;
 }
 
-.HookEditor-save-btn {
-    width: 4em;
+.HookEditor-UI {
     align-self: center;
     margin-top: 1em;
+    display: flex;
+}
+
+.HookEditor-btn{
+    width: 5em;
+    margin: 0 1em;
 }

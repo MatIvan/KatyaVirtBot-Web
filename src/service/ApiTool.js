@@ -18,12 +18,40 @@ function sendPost(uri, body) {
 
 /**
  * @param {string} uri
+ * @param {any=} body
+ * @returns {Promise<any>}
+ */
+function sendPut(uri, body) {
+    /** @type {RequestInit} */
+    const opt = {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify(body)
+    };
+    return fetchJson(uri, opt);
+}
+
+/**
+ * @param {string} uri
  * @returns {Promise<any>}
  */
 function sendGet(uri) {
     /** @type {RequestInit} */
     const opt = {
         method: 'GET',
+        headers: getHeaders()
+    };
+    return fetchJson(uri, opt);
+}
+
+/**
+ * @param {string} uri
+ * @returns {Promise<any>}
+ */
+function sendDelete(uri) {
+    /** @type {RequestInit} */
+    const opt = {
+        method: 'DELETE',
         headers: getHeaders()
     };
     return fetchJson(uri, opt);
@@ -69,6 +97,8 @@ function getHeaders() {
 
 const ApiTool = {
     sendPost,
-    sendGet
+    sendGet,
+    sendDelete,
+    sendPut
 }
 export default ApiTool;
