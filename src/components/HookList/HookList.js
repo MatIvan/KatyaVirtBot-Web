@@ -14,10 +14,9 @@ function HookList({ hooks, selectedHook, onSelect }) {
         return (<div className='form HookList'><h1>Hooks:</h1>empty</div>);
     }
     const lines = hooks.map((hook, index) => {
-        const selected = hook.id === selectedHook?.id ? "HookList-line-selected" : "";
         return (<div
             key={'hook-' + index}
-            className={'HookList-line ' + selected}
+            className={'HookList-line'}
             onClick={() => {
                 onSelect(hook);
             }}>

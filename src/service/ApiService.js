@@ -35,7 +35,7 @@ function getAllHooks() {
  * @param {WebHook} hook 
  */
 function saveHook(hook) {
-    if (!hook.id) {
+    if (hook.id===undefined) {
         return;
     }
     if (hook.id < 0) {

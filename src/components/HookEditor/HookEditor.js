@@ -44,7 +44,7 @@ function HookEditor({ newHook }) {
         }
     }
 
-    const fillEmptyHook=()=>{
+    const fillEmptyHook = () => {
         setId(-1);
         setUserId(newHook?.userId);
         setName('new hook');
@@ -67,7 +67,7 @@ function HookEditor({ newHook }) {
             <Input key='line-startWith' caption='startWith:' value={startWith} onChange={(newStartWith) => { setStartWith(newStartWith) }} />
             <Boolean key='line-sens' caption='sens:' value={sens} onChange={(newSens) => { setSens(newSens) }} />
             <div className='HookEditor-UI'>
-                <button className='HookEditor-btn' onClick={() => { deleteHook(id) }} >delete</button>
+                <button className='HookEditor-btn' onClick={() => { deleteHook(getHook()) }} >delete</button>
                 <button className='HookEditor-btn' onClick={() => { fillEmptyHook() }} >add</button>
                 <button className='HookEditor-btn' onClick={() => { saveHook(getHook()) }} >save</button>
             </div>
@@ -75,12 +75,23 @@ function HookEditor({ newHook }) {
     );
 }
 
+/**
+ * @param {WebHook} hook
+ */
 function saveHook(hook) {
     ApiService.saveHook(hook);
 }
 
-function deleteHook(id) {
-    ApiService.deleteHook(id);
+/**
+ * @param {WebHook} hook
+ */
+function deleteHook(hook) {
+    if (hook.id === undefined) {
+        return;
+    }
+    if (window.confirm('Удалить hook? \n id=' + hook.id + '\n name=' + hook.name)) {
+        ApiService.deleteHook(hook.id);
+    }
 }
 
 export default HookEditor;
