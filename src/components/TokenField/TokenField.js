@@ -8,7 +8,7 @@ import StorageService from '../../service/StorageService';
  */
 function TokenField({ onEnter }) {
     const [token, setToken] = useState(StorageService.getToken() || "");
-    const [url, setUrl] = useState("http://localhost:8888");
+    const [url, setUrl] = useState(StorageService.getUrl() || "http://mat-iv.ru/katya/bot");
     return (
         <div className='form TokenField'>
             <h1>Server:</h1>
