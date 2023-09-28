@@ -16,6 +16,7 @@ import ApiTool from './ApiTool';
  * @property {string | undefined} name
  * @property {number | undefined} userId
  * @property {string | undefined} url
+ * @property {boolean } isPutToQueue
  * @property {Condition | undefined} condition
  */
 

@@ -16,6 +16,7 @@ function HookEditor({ newHook }) {
     const [userId, setUserId] = useState(newHook?.userId);
     const [name, setName] = useState(newHook?.name);
     const [url, setUrl] = useState(newHook?.url);
+    const [queue, setQueue] = useState(newHook?.isPutToQueue);
     const [chat, setChat] = useState(newHook?.condition?.chatName);
     const [contains, setContains] = useState(newHook?.condition?.contains?.toString());
     const [startWith, setStartWith] = useState(newHook?.condition?.startWith?.toString());
@@ -26,6 +27,7 @@ function HookEditor({ newHook }) {
         setUserId(newHook?.userId);
         setName(newHook?.name);
         setUrl(newHook?.url);
+        setQueue(newHook?.isPutToQueue);
         setChat(newHook?.condition?.chatName);
         setContains(newHook?.condition?.contains?.toString());
         setStartWith(newHook?.condition?.startWith?.toString());
@@ -35,6 +37,7 @@ function HookEditor({ newHook }) {
     const getHook = () => {
         return {
             id, userId, name, url,
+            isPutToQueue: queue === undefined ? false : queue,
             condition: {
                 chatName: chat,
                 contains: contains?.split(',').map(s => s.trim()),
@@ -49,6 +52,7 @@ function HookEditor({ newHook }) {
         setUserId(newHook?.userId);
         setName('new hook');
         setUrl('http://address');
+        setQueue(false);
         setChat('COMMON');
         setContains(undefined);
         setStartWith(undefined);
@@ -62,6 +66,7 @@ function HookEditor({ newHook }) {
             <Text key='line-userid' caption='userId:' value={userId} />
             <Input key='line-name' caption='name:' value={name} onChange={(newName) => { setName(newName) }} />
             <Input key='line-url' caption='url:' value={url} onChange={(newUrl) => { setUrl(newUrl) }} />
+            <Boolean key='line-queue' caption='put to queue:' value={queue} onChange={(newQueue) => { setQueue(newQueue) }} />
             <Input key='line-chat' caption='chat:' value={chat} onChange={(newChat) => { setChat(newChat) }} />
             <Input key='line-contains' caption='contains:' value={contains} onChange={(newContains) => { setContains(newContains) }} />
             <Input key='line-startWith' caption='startWith:' value={startWith} onChange={(newStartWith) => { setStartWith(newStartWith) }} />
